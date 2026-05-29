@@ -7,9 +7,26 @@ import { CartProvider } from '@/context/CartContext';
 import CartSidebar from '@/components/CartSidebar';
 
 export const metadata: Metadata = {
-  title: 'Smart Curtains Kenya | Automated Blinds & Motorized Curtains',
+  metadataBase: new URL('https://smartcurtains.co.ke'),
+  title: {
+    default: 'Smart Curtains Kenya | Automated Blinds & Motorized Curtains',
+    template: '%s | Smart Curtains Kenya',
+  },
   description: 'Upgrade your home with premium smart curtains and automated blinds in Kenya. Smart home window treatments with remote and voice control on smartcurtains.co.ke.',
-  keywords: 'smart curtains Kenya, automated blinds Nairobi, motorized curtains, electric curtains Kenya, smart home window treatments',
+  keywords: 'smart curtains Kenya, automated blinds Nairobi, motorized curtains, electric curtains Kenya, smart home window treatments, intelligent blinds Kenya',
+  openGraph: {
+    type: 'website',
+    locale: 'en_KE',
+    url: 'https://smartcurtains.co.ke',
+    siteName: 'Smart Curtains Kenya',
+    title: 'Smart Curtains Kenya | Automated Blinds & Motorized Curtains',
+    description: 'Upgrade your home with premium smart curtains and automated blinds in Kenya. Smart home window treatments with remote and voice control.',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Smart Curtains Kenya',
+    description: 'Motorized smart curtains and automated blinds. Shop now at smartcurtains.co.ke.',
+  },
 };
 
 export default function RootLayout({

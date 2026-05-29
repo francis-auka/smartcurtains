@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect, useMemo, Suspense } from 'react';
+import SeoDescription from '@/components/SeoDescription';
 import { createClient } from '@/utils/supabase/client';
 import ProductCard from '@/components/ProductCard';
 import Image from 'next/image';
@@ -206,6 +207,7 @@ function HomeContent() {
           ))}
         </div>
       </section>
+      <SeoDescription />
     </div>
   );
 }

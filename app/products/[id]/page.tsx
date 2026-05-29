@@ -5,6 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Heart, Shield, RefreshCw, Truck, ChevronLeft } from 'lucide-react';
 import { useState, useEffect, use } from 'react';
+import SeoDescription from '@/components/SeoDescription';
 import { useCart } from '@/context/CartContext';
 
 interface Product {
@@ -219,6 +220,7 @@ export default function ProductPage({ params }: ProductPageProps) {
             </div>
           </div>
         </div>
+        <SeoDescription />
       </div>
     </div>
   );

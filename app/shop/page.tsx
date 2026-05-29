@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect, Suspense } from 'react';
+import SeoDescription from '@/components/SeoDescription';
 import { createClient } from '@/utils/supabase/client';
 import ProductGrid from '@/components/ProductGrid';
 import { useSearchParams } from 'next/navigation';
@@ -135,6 +136,7 @@ function ShopContent() {
           )}
         </div>
       </div>
+      <SeoDescription />
     </div>
   );
 }
