@@ -27,6 +27,9 @@ export const metadata: Metadata = {
     title: 'Smart Curtains Kenya',
     description: 'Motorized smart curtains and automated blinds. Shop now at smartcurtains.co.ke.',
   },
+  verification: {
+    google: "UXUPKp0xu1zyNcbUiRDVda2pXAk_ssvilNUDUR2NI78"
+  }
 };
 
 export default function RootLayout({
