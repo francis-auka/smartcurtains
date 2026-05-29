@@ -7,14 +7,31 @@ import Link from 'next/link';
 
 export default function CartSidebar() {
   const { cart, removeFromCart, updateQuantity, cartTotal, isCartOpen, setIsCartOpen } = useCart();
+  const whatsappNumber = '254717308051';
 
+  const handleWhatsAppCheckout = () => {
+    if (cart.length === 0) return;
+
+    const orderLines = cart
+      .map(
+        (item, index) =>
+          `${index + 1}. ${item.name} x${item.quantity} - KES ${item.price * item.quantity}`
+      )
+      .join('\n');
+
+    const message = `Hello SmartCurtains,%0A%0AI would like to place an order:%0A%0A${orderLines}%0A%0ATotal: KES ${cartTotal}%0A%0AThank you.`;
+
+    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${message}`;
+
+    window.open(whatsappUrl, '_blank');
+  };
   if (!isCartOpen) return null;
 
   return (
     <div className="fixed inset-0 z-[100] overflow-hidden">
       {/* Overlay */}
-      <div 
-        className="absolute inset-0 bg-black/40 backdrop-blur-sm transition-opacity duration-500" 
+      <div
+        className="absolute inset-0 bg-black/40 backdrop-blur-sm transition-opacity duration-500"
         onClick={() => setIsCartOpen(false)}
       />
 
@@ -28,7 +45,7 @@ export default function CartSidebar() {
             </div>
             <h2 className="text-xl font-black tracking-tighter text-black">Your Bag</h2>
           </div>
-          <button 
+          <button
             onClick={() => setIsCartOpen(false)}
             className="p-3 text-black/20 hover:text-black transition-colors"
           >
@@ -47,7 +64,7 @@ export default function CartSidebar() {
                 <p className="text-xl font-bold tracking-tight text-black">Your bag is empty.</p>
                 <p className="text-sm font-medium text-black/30 max-w-[200px] mx-auto">Discover our latest architectural curtains.</p>
               </div>
-              <button 
+              <button
                 onClick={() => setIsCartOpen(false)}
                 className="text-[12px] font-black uppercase tracking-widest text-white bg-black px-12 py-5 rounded-full hover:scale-105 transition duration-500 shadow-xl shadow-black/20"
               >
@@ -72,41 +89,41 @@ export default function CartSidebar() {
                   {/* Details */}
                   <div className="flex-1 flex flex-col justify-center gap-6">
                     <div className="space-y-2">
-                       <div className="flex justify-between items-start gap-4">
-                          <h3 className="text-lg font-black tracking-tight text-black leading-tight uppercase">
-                            {item.name}
-                          </h3>
-                          <button 
-                            onClick={() => removeFromCart(item.id)}
-                            className="text-black/10 hover:text-red-500 transition-colors p-1"
-                          >
-                            <Trash2 size={16} />
-                          </button>
-                       </div>
-                       <p className="text-[13px] font-bold text-black/40">
-                          KES {item.price.toLocaleString()}
-                       </p>
+                      <div className="flex justify-between items-start gap-4">
+                        <h3 className="text-lg font-black tracking-tight text-black leading-tight uppercase">
+                          {item.name}
+                        </h3>
+                        <button
+                          onClick={() => removeFromCart(item.id)}
+                          className="text-black/10 hover:text-red-500 transition-colors p-1"
+                        >
+                          <Trash2 size={16} />
+                        </button>
+                      </div>
+                      <p className="text-[13px] font-bold text-black/40">
+                        KES {item.price.toLocaleString()}
+                      </p>
                     </div>
 
                     <div className="flex items-center justify-between mt-auto">
-                       <div className="flex items-center bg-[#f5f5f7] rounded-full px-4 py-2 border border-black/5">
-                        <button 
+                      <div className="flex items-center bg-[#f5f5f7] rounded-full px-4 py-2 border border-black/5">
+                        <button
                           onClick={() => updateQuantity(item.id, item.quantity - 1)}
                           className="text-black/30 hover:text-black transition px-3 font-bold"
                         >
                           -
                         </button>
                         <span className="w-6 text-center text-xs font-black text-black">{item.quantity}</span>
-                        <button 
+                        <button
                           onClick={() => updateQuantity(item.id, item.quantity + 1)}
                           className="text-black/30 hover:text-black transition px-3 font-bold"
                         >
                           +
                         </button>
-                       </div>
-                       <p className="text-[13px] font-black tracking-tight text-black">
-                          KES {(item.price * item.quantity).toLocaleString()}
-                       </p>
+                      </div>
+                      <p className="text-[13px] font-black tracking-tight text-black">
+                        KES {(item.price * item.quantity).toLocaleString()}
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -120,16 +137,19 @@ export default function CartSidebar() {
           <div className="p-10 bg-[#f5f5f7] border-t border-black/5 space-y-8 md:rounded-bl-[3rem]">
             <div className="flex justify-between items-end">
               <div className="space-y-1">
-                 <span className="text-[12px] font-bold uppercase tracking-widest text-black/30">Total</span>
-                 <p className="text-[11px] font-bold text-black/20 uppercase tracking-widest leading-none">Excluding Shipping</p>
+                <span className="text-[12px] font-bold uppercase tracking-widest text-black/30">Total</span>
+                <p className="text-[11px] font-bold text-black/20 uppercase tracking-widest leading-none">Excluding Shipping</p>
               </div>
               <span className="text-3xl font-black tracking-tighter text-black">
                 KES {cartTotal.toLocaleString()}
               </span>
             </div>
-            
-            <button className="w-full bg-black text-white text-[13px] font-black uppercase tracking-widest py-6 rounded-full hover:scale-[1.02] transition duration-500 shadow-2xl shadow-black/20">
-               Proceed to Checkout
+
+            <button
+              onClick={handleWhatsAppCheckout}
+              className="w-full bg-black text-white text-[13px] font-black uppercase tracking-widest py-6 rounded-full hover:scale-[1.02] transition duration-500 shadow-2xl shadow-black/20"
+            >
+              Checkout via WhatsApp
             </button>
             <p className="text-[10px] font-bold uppercase tracking-widest text-black/20 text-center">
               Secure Checkout Encrypted
@@ -137,6 +157,6 @@ export default function CartSidebar() {
           </div>
         )}
       </div>
-    </div>
+    </div >
   );
 }
