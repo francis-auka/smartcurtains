@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function Footer() {
   return (
@@ -8,7 +9,9 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-6 border-t border-black/5 pt-20">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-20 md:gap-10">
           <div className="space-y-8">
-            <Link href="/" className="text-xl font-black tracking-tighter text-black uppercase block">Smartcurtains.</Link>
+            <Link href="/" className="block">
+              <Image src="/images/logo.png" alt="SmartCurtains Logo" width={140} height={40} className="h-8 w-auto" />
+            </Link>
             <p className="text-black/40 font-medium text-sm leading-relaxed">
               Premium motorized curtains and automated blinds. Precision engineering for your windows.
             </p>
