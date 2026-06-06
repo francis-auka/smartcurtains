@@ -21,11 +21,24 @@ export const metadata: Metadata = {
     siteName: 'Smart Curtains Kenya',
     title: 'Smart Curtains Kenya | Automated Blinds & Motorized Curtains',
     description: 'Upgrade your home with premium smart curtains and automated blinds in Kenya. Smart home window treatments with remote and voice control.',
+    images: [
+      {
+        url: '/images/logo.png',
+        width: 1200,
+        height: 630,
+        alt: 'Smart Curtains Kenya Logo',
+      },
+    ],
+  },
+  icons: {
+    icon: '/images/logo.png',
+    apple: '/images/logo.png',
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Smart Curtains Kenya',
     description: 'Motorized smart curtains and automated blinds. Shop now at smartcurtains.co.ke.',
+    images: ['/images/logo.png'],
   },
   verification: {
     google: "UXUPKp0xu1zyNcbUiRDVda2pXAk_ssvilNUDUR2NI78"
