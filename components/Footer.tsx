@@ -10,7 +10,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-20 md:gap-10">
           <div className="space-y-8">
             <Link href="/" className="block">
-              <Image src="/images/logo.png" alt="SmartCurtains Logo" width={140} height={40} className="h-8 w-auto" />
+              <Image src="/images/logo.png" alt="SmartCurtains Logo" width={200} height={55} className="h-11 w-auto" />
             </Link>
             <p className="text-black/40 font-medium text-sm leading-relaxed">
               Premium motorized curtains and automated blinds. Precision engineering for your windows.
